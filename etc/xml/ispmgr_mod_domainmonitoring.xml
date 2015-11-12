@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mgrdata> 
+    <mainmenu level="admin+">    
+        <node name="tool">         
+            <node name="domainmonitoring" type="form" />
+        </node> 
+    </mainmenu> 
+    <handler name="domainmonitoring" type="cgi"> 
+        <func name="domainmonitoring" /> 
+    </handler>
+    <metadata name="domainmonitoring" type="form">
+        <form helpurl="https://montenegro-it.com/plugins/domainmonitoring.html">
+            <page name="general">
+                <field fullwidth="yes" name="warningtitle">
+                    <textdata name="warning" type="data"/>
+                </field>
+                <field name="antizapret">
+                    <input type="checkbox" show="'email','from'" name="antizapret"/>
+                    <desc name="antizapret_desc"/>
+                </field>
+                <field name="spam">
+                    <input type="checkbox" show="'email','from'"  name="spam"/>
+                    <desc name="spam_desc"/>
+                </field>
+                <field name="email"  >
+                    <input empty="no" id="email" zoom="5" type="text" name="email"/>
+                </field>
+                <field name="from" id="from">
+                    <input empty="no" type="text" name="from"/>
+                </field>
+            </page>
+        </form>
+    </metadata> 
+    <lang name="ru"> 
+        <messages name="domainmonitoring">
+            <msg name="warning">Подробная информация о работе модуля представлена на справочной странице</msg>
+            <msg name="title">Настройка модуля мониторинга доменов</msg>
+            <msg name="from">Email отправителя</msg>
+             <msg name="hint_from">Email будет подставляться в качестве адреса отправителя уведомлений</msg>
+            <msg name="hint_email">Если нужно несколько получателей, укажите через запятую</msg>
+            <msg name="email">Email для уведомления о блокировках</msg>
+            <msg name="spam_desc">Уведомлять о попадании ip адресов в спам-базы</msg>
+            <msg name="antizapret_desc">Уведомлять о попадании ip адресов и доменов сервера в реестр "Роскомнадзора"</msg>
+        </messages>   
+        <messages name="desktop"> 
+            <msg name="menu_domainmonitoring">Мониторинг реестров</msg>
+        </messages>
+    </lang> 
+</mgrdata>

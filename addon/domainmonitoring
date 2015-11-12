@@ -1,0 +1,39 @@
+#!/usr/bin/php
+<?php
+/*
+ * Title: DomainMonitoring plugin for ispmanager 5.
+ * Version: 1.0.0 (12/Nov/2015)
+ * Author: Denis.
+ * License: GPL.
+ * Site: https://montenegro-it.com
+ * Email: contact@montenegro-it.com
+ */
+define("PLUGIN_PATH", "/usr/local/mgr5/var/.plugin_domainmonitoring/");
+include_once (PLUGIN_PATH . "function.php");
+if ($_SERVER['PARAM_sok'] == "ok") {
+    DomainMonitoring::check_cron();
+    DomainMonitoring::save_setting($_SERVER['PARAM_from'], $_SERVER['PARAM_email'], $_SERVER['PARAM_spam'], $_SERVER['PARAM_antizapret']);
+ }
+if (is_file(PLUGIN_PATH . "setting.txt")) {
+    $data = json_decode(file_get_contents(PLUGIN_PATH . "setting.txt"));
+    $email = implode(", ", $data->email);
+    $from = $data->from;
+    $spam = $data->spam;
+    $antizapret = $data->antizapret;
+} else {
+    $spam = "";
+    $antizapret = "";
+    $email = "";
+    $from = "";
+}
+
+$xml = "";
+$xml.="<email>" . $email . "</email>";
+$xml.="<from>" . $from . "</from>";
+if ($spam) {
+    $xml.="<spam>" . $spam . "</spam>";
+}
+if ($antizapret) {
+    $xml.="<antizapret>" . $antizapret . "</antizapret>";
+}
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?><doc>" . $xml . "</doc>";
