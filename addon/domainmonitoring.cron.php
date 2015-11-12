@@ -11,6 +11,6 @@
 @set_time_limit(0);
 @error_reporting(E_NONE);
 @ini_set('display_errors', 0);
-define("PLUGIN_PATH", "/usr/local/ispmgr/var/.plugin_domainmonitoring/");
+define("PLUGIN_PATH", "/usr/local/mgr5/var/.plugin_domainmonitoring/");
 include_once (PLUGIN_PATH."function.php");
 DomainMonitoring::cron_run();
