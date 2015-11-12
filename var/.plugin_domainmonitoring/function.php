@@ -132,10 +132,10 @@ class DomainMonitoring {
 
             $spam = 0;
             $antizapret = 0;
-            if ($param->spam) {
+            if ($param->spam=="on") {
                 $spam = 1;
             }
-            if ($param->antizapret) {
+            if ($param->antizapret=="on") {
                 $antizapret = 1;
             }
             if ($antizapret && $spam) {
